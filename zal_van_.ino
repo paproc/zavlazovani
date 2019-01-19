@@ -2,8 +2,7 @@
 ////jen testovací verze
 ////sem příde vypisování
 ////cislo které jsem přečetl+1
-//fffff
-//151651656546546
+//https://github.com/paproc/zavlazovani
 
 //knihovny
 #include <SD.h>
