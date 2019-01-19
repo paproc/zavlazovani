@@ -3,6 +3,8 @@
 ////sem příde vypisování
 ////cislo které jsem přečetl+1
 //https://github.com/paproc/zavlazovani
+//xx
+//cccc
 
 //knihovny
 #include <SD.h>
