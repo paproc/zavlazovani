@@ -19,7 +19,7 @@ long cas;
 
 
 //vrátí aktualní soubor
-const char konfigurace(){
+char konfigurace(){
   if(!SD.exists("soubor.txt")){
     File a;
     a = SD.open("soubor.txt");
