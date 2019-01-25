@@ -6,15 +6,16 @@
 //
 //knihovny
 #include <SD.h>
-
+#include <SoftwareSerial.h>
 
 //konstanty
 const int pinVlhkomer = 1;
-
+const int RX = 1;
+const int TX = 1;
+const int inthranavlh = 1000;
 
 //proměné
 int vlhkost;
-int hranavlh = 1000;
 long cas;
 
 
@@ -55,13 +56,33 @@ void zapis(){
 void vypis(){
   File myFile;
   myFile=SD.open(konfigurace(),FILE_READ);
+ 
+  //sem příde vypisování
+  ///zahájí blutut
+  SoftwareSerial blutut =  SoftwareSerial(RX,TX);
+  blutut.begin(9600);
+  
   //sem příde vypisování
   myFile.close();
+  newlog();
+  }
+
+  //noví log
+void newlog(){
+  String jmenos;
+  char jmeno[10];
+  jmenos = String(konfigurace());
+  jmenos.toCharArray(jmeno,10);
   SD.remove("soubor.txt");
   File konfigurace;
+  int cislo;
+  cislo = int(jmeno[4])*100;
+  cislo = cislo + int(jmeno[5])*10;
+  cislo = cislo + int(jmeno[6]);
+  cislo = cislo + 1;
   konfigurace=SD.open("soubor.txt",FILE_WRITE);
     konfigurace.print("log");
-    konfigurace.print("002");//cislo které jsem přečetl+1
+    konfigurace.print(cislo);
     konfigurace.print(".txt");
   konfigurace.close();
   }
@@ -71,12 +92,10 @@ void vypis(){
 
 
 
-
-
-
 void setup() {
  // jen testovací verze
  Serial.begin(9600);
+
 }
 
 
