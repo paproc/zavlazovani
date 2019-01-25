@@ -1,7 +1,6 @@
 //připomínky
 ////jen testovací verze
 ////sem příde vypisování
-////cislo které jsem přečetl+1
 //https://github.com/paproc/zavlazovani
 //
 //knihovny
@@ -56,13 +55,14 @@ void zapis(){
 void vypis(){
   File myFile;
   myFile=SD.open(konfigurace(),FILE_READ);
- 
-  //sem příde vypisování
   ///zahájí blutut
   SoftwareSerial blutut =  SoftwareSerial(RX,TX);
   blutut.begin(9600);
-  
-  //sem příde vypisování
+  delay(500);
+  while(myFile.available()){
+  blutut.print(myFile.read());
+  }
+  blutut.end();
   myFile.close();
   newlog();
   }
