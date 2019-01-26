@@ -1,8 +1,7 @@
 //připomínky
 ////jen testovací verze
-////sem příde vypisování
 //https://github.com/paproc/zavlazovani
-//
+
 //knihovny
 #include <SD.h>
 #include <SoftwareSerial.h>
@@ -16,6 +15,22 @@ const int inthranavlh = 1000;
 //proměné
 int vlhkost;
 long cas;
+
+
+void setup() {
+ // jen testovací verze
+ Serial.begin(9600);
+
+}
+
+
+void loop() {
+ cas = millis() - 2147483648;
+ vlhkost = analog.read
+}
+
+
+
 
 
 //vrátí aktualní soubor
@@ -51,7 +66,7 @@ void zapis(){
   myFile.close();
   }
 
-
+//vypis skrze blutut
 void vypis(){
   File myFile;
   myFile=SD.open(konfigurace(),FILE_READ);
@@ -67,40 +82,22 @@ void vypis(){
   newlog();
   }
 
-  //noví log
+//noví log
 void newlog(){
   String jmenos;
   char jmeno[10];
   jmenos = String(konfigurace());
   jmenos.toCharArray(jmeno,10);
   SD.remove("soubor.txt");
-  File konfigurace;
   int cislo;
   cislo = int(jmeno[4])*100;
   cislo = cislo + int(jmeno[5])*10;
   cislo = cislo + int(jmeno[6]);
   cislo = cislo + 1;
+  File konfigurace;
   konfigurace=SD.open("soubor.txt",FILE_WRITE);
     konfigurace.print("log");
     konfigurace.print(cislo);
     konfigurace.print(".txt");
   konfigurace.close();
   }
-
-
-
-
-
-
-void setup() {
- // jen testovací verze
- Serial.begin(9600);
-
-}
-
-
-void loop() {
-
-
-//cas = millis() - 2147483648;
-}
