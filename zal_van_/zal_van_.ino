@@ -13,7 +13,7 @@ const int TX = 1;
 const int hranavlh = 1000;
 const int pinslunce = 1;
 
-//proměnét
+//proměné
 int vlhkost;
 long cas;
 int slunce;
