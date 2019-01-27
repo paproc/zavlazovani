@@ -13,7 +13,7 @@ const int TX = 1;
 const int hranavlh = 1000;
 const int pinslunce = 1;
 
-//proměné
+//proměnét
 int vlhkost;
 long cas;
 int slunce;
@@ -28,8 +28,8 @@ void setup() {
 
 void loop() {
  cas = millis() - 2147483648;
- vlhkost = analog.read(pinVlhkomer);
- slunce = analog.read(pinslunce);
+ vlhkost = analogRead(pinVlhkomer);
+ slunce = analogRead(pinslunce);
  
 }
 
