@@ -12,11 +12,14 @@ const int RX = 1;
 const int TX = 1;
 const int hranavlh = 1000;
 const int pinslunce = 1;
+const int vzdalenostini = 1;
+const int vzdalenostodcit = 1; 
 
 //proměné
 int vlhkost;
 long cas;
 int slunce;
+int vzdalenost
 
 
 void setup() {
@@ -105,3 +108,11 @@ void newlog(){
     konfigurace.print(".txt");
   konfigurace.close();
   }
+//vzdálenost od vrchu nádrže v cm
+int vzdalenost(){
+  digitalWrite(vzdalenostini,HIGH);
+  delay(2);
+  digitalWrite(vzdalenostini,LOW);
+  int odezva = pulseIn(vzdalenostodcit,HIGH);
+  return(odezva/58.31);
+}
