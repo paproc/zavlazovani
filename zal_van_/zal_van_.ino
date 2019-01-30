@@ -19,7 +19,7 @@ const int vzdalenostodcit = 1;
 int vlhkost;
 long cas;
 int slunce;
-int vzdalenost
+int vzdalenost;
 
 
 void setup() {
@@ -33,7 +33,7 @@ void loop() {
  cas = millis() - 2147483648;
  vlhkost = analogRead(pinVlhkomer);
  slunce = analogRead(pinslunce);
- 
+ vzdalenost = fvzdalenost(); 
 }
 
 
@@ -109,7 +109,7 @@ void newlog(){
   konfigurace.close();
   }
 //vzdálenost od vrchu nádrže v cm
-int vzdalenost(){
+int fvzdalenost(){
   digitalWrite(vzdalenostini,HIGH);
   delay(2);
   digitalWrite(vzdalenostini,LOW);
