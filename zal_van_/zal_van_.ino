@@ -60,8 +60,9 @@ void loop() {
 
 
 //zaleje
-void zalij(){
+bool zalij(){
 
+return(false);  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 }
 //vrátí aktualní soubor
 char konfigurace(){
