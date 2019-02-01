@@ -33,7 +33,7 @@ void loop() {
  cas = millis() - 2147483648;
  vlhkost = analogRead(pinVlhkomer);
  slunce = analogRead(pinslunce);
- vzdalenost = fvzdalenost(); 
+// vzdalenost = fvzdalenost(); 
 }
 
 
@@ -108,11 +108,11 @@ void newlog(){
     konfigurace.print(".txt");
   konfigurace.close();
   }
-//vzdálenost od vrchu nádrže v cm
-int fvzdalenost(){
-  digitalWrite(vzdalenostini,HIGH);
-  delay(2);
-  digitalWrite(vzdalenostini,LOW);
-  int odezva = pulseIn(vzdalenostodcit,HIGH);
-  return(odezva/58.31);
-}
+////vzdálenost od vrchu nádrže v cm
+//int fvzdalenost(){
+//  digitalWrite(vzdalenostini,HIGH);
+//  delay(2);
+//  digitalWrite(vzdalenostini,LOW);
+//  int odezva = pulseIn(vzdalenostodcit,HIGH);
+//  return(odezva/58.31);
+//}
