@@ -1,5 +1,4 @@
 //připomínky
-////jen testovací verze
 ////napsat "zalij();"
 //https://github.com/paproc/zavlazovani
 
@@ -32,8 +31,7 @@ int vzdalenost;
 bool voda = false;
 
 void setup() {
- // jen testovací verze
- Serial.begin(9600);
+ 
 
 }
 
@@ -47,10 +45,10 @@ void loop() {
    digitalWrite(pinvodaini, LOW);
    vlhkost = analogRead(pinVlhkomer);
    slunce = analogRead(pinslunce);
-   while(vlhkost < hranavlh & slunce < maxslunce & voda == true){
+   while(vlhkost < hranavlh & slunce < maxslunce & voda == true){                 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     zalij();
    }
-   cas = cas + posuncasu ;
+   caszalit = caszalit + posuncasu ;
    zapis();
   }
   if (digitalRead(pinvypis) == HIGH) {
