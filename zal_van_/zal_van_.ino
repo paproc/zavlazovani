@@ -1,5 +1,6 @@
 //připomínky
 ////jen testovací verze
+////napsat "zalij();"
 //https://github.com/paproc/zavlazovani
 
 //knihovny
@@ -7,20 +8,28 @@
 #include <SoftwareSerial.h>
 
 //konstanty
+//piny
+const int pinvypis = 1;
 const int pinVlhkomer = 1;
 const int RX = 1;
 const int TX = 1;
-const int hranavlh = 1000;
 const int pinslunce = 1;
-const int vzdalenostini = 1;
-const int vzdalenostodcit = 1; 
+const int pinvodaini = 1;
+const int pinvoda = 1; 
+//další
+const int hranavlh = 100;
+const int dobazavlazovani = 1000;
+const int maxslunce = 100;
+const long posuncasu = 1800000;
+
 
 //proměné
 int vlhkost;
 long cas;
+long caszalit = 5000;
 int slunce;
 int vzdalenost;
-
+bool voda = false;
 
 void setup() {
  // jen testovací verze
@@ -30,16 +39,32 @@ void setup() {
 
 
 void loop() {
- cas = millis() - 2147483648;
- vlhkost = analogRead(pinVlhkomer);
- slunce = analogRead(pinslunce);
-// vzdalenost = fvzdalenost(); 
+  cas = millis() - 2147483648;
+  if(cas > caszalit & cas - caszalit < 5000){
+   digitalWrite(pinvodaini, HIGH);
+    if(digitalRead(pinvoda) == HIGH){voda = true;}
+    else{voda = false;}
+   digitalWrite(pinvodaini, LOW);
+   vlhkost = analogRead(pinVlhkomer);
+   slunce = analogRead(pinslunce);
+   while(vlhkost < hranavlh & slunce < maxslunce & voda == true){
+    zalij();
+   }
+   cas = cas + posuncasu ;
+   zapis();
+  }
+  if (digitalRead(pinvypis) == HIGH) {
+    vypis();
+  }
+  delay(1000);
 }
 
 
 
+//zaleje
+void zalij(){
 
-
+}
 //vrátí aktualní soubor
 char konfigurace(){
   if(!SD.exists("soubor.txt")){
@@ -69,7 +94,9 @@ void zapis(){
     myFile.print("cas: ");
     myFile.print(cas);
     myFile.print(" vlhkost: ");
-    myFile.println(vlhkost);  
+    myFile.print(vlhkost);  
+    myFile.print(" voda: ");
+    myFile.println(voda);
   myFile.close();
   }
 
@@ -80,7 +107,7 @@ void vypis(){
   ///zahájí blutut
   SoftwareSerial blutut =  SoftwareSerial(RX,TX);
   blutut.begin(9600);
-  delay(500);
+  while(blutut.available() == 0){delay(100);}
   while(myFile.available()){
   blutut.print(myFile.read());
   }
@@ -108,11 +135,3 @@ void newlog(){
     konfigurace.print(".txt");
   konfigurace.close();
   }
-////vzdálenost od vrchu nádrže v cm
-//int fvzdalenost(){
-//  digitalWrite(vzdalenostini,HIGH);
-//  delay(2);
-//  digitalWrite(vzdalenostini,LOW);
-//  int odezva = pulseIn(vzdalenostodcit,HIGH);
-//  return(odezva/58.31);
-//}
