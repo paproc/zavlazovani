@@ -24,8 +24,8 @@ const long posuncasu = 1800000;
 
 //proměné
 int vlhkost;
-long cas;
-long caszalit = 5000;
+unsigned long cas;
+unsigned long caszalit = 10000;
 int slunce;
 int vzdalenost;
 bool voda = false;
@@ -37,15 +37,15 @@ void setup() {
 
 
 void loop() {
-  cas = millis() - 2147483648;
-  if(cas > caszalit & cas - caszalit < 5000){
+  cas = millis();
+  if((cas > caszalit) & (cas - caszalit < 3600000)){
    digitalWrite(pinvodaini, HIGH);
     if(digitalRead(pinvoda) == HIGH){voda = true;}
     else{voda = false;}
    digitalWrite(pinvodaini, LOW);
    vlhkost = analogRead(pinVlhkomer);
    slunce = analogRead(pinslunce);
-   while(vlhkost < hranavlh & slunce < maxslunce & voda == true){                 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+   while(vlhkost < hranavlh & slunce < maxslunce & voda == true){                 //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     zalij();
    }
    caszalit = caszalit + posuncasu ;
@@ -61,7 +61,7 @@ void loop() {
 
 //zaleje
 void zalij(){
- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+ delay(500);//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 }
 //vrátí aktualní soubor
 char konfigurace(){
