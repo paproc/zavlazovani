@@ -8,13 +8,13 @@
 
 //konstanty
 //piny
-const int pinvypis = D6;
+const int pinvypis = 6;
 const int pinVlhkomer = A2;
-const int RX = D2;
-const int TX = D3;
+const int RX = 2;
+const int TX = 3;
 const int pinslunce = A1;
-const int pinvodaini = D4;
-const int pinvoda = D5; 
+const int pinvodaini = 4;
+const int pinvoda = 5; 
 //další
 const int hranavlh = 100;
 const int dobazavlazovani = 1000;
@@ -31,7 +31,6 @@ int vzdalenost;
 bool voda = false;
 
 void setup() {
- 
 
 }
 
