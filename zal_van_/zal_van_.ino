@@ -8,13 +8,13 @@
 
 //konstanty
 //piny
-const int pinvypis = 1;
-const int pinVlhkomer = 1;
-const int RX = 1;
-const int TX = 1;
-const int pinslunce = 1;
-const int pinvodaini = 1;
-const int pinvoda = 1; 
+const int pinvypis = D6;
+const int pinVlhkomer = A2;
+const int RX = D2;
+const int TX = D3;
+const int pinslunce = A1;
+const int pinvodaini = D4;
+const int pinvoda = D5; 
 //další
 const int hranavlh = 100;
 const int dobazavlazovani = 1000;
