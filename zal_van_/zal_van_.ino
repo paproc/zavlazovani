@@ -15,6 +15,7 @@ const int TX = 3;
 const int pinslunce = A1;
 const int pinvodaini = 4;
 const int pinvoda = 5; 
+const int pinzalij = 7;
 //další
 const int hranavlh = 100;
 const int dobazavlazovani = 1000;
@@ -60,7 +61,9 @@ void loop() {
 
 //zaleje
 void zalij(){
- delay(500);                                                                      //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+ digitalWrite(pinzalij, HIGH);
+ delay(1000);
+ digitalWrite(pinzalij, LOW);    
 }
 //vrátí aktualní soubor
 char konfigurace(){
