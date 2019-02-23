@@ -1,5 +1,3 @@
-//připomínky
-////napsat "zalij();"
 //https://github.com/paproc/zavlazovani
 
 //knihovny
